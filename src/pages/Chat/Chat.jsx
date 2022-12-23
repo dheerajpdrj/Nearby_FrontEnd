@@ -22,7 +22,8 @@ export default function Chat() {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io('https://nearby-server.fu-tura.live/socket');
+    // socket.current = io('https://nearby-server.fu-tura.live/socket');
+    socket.current = io('http://localhost:8800');
     socket.current.emit('new-user-add', user.id);
     socket.current.on('get-users', (users) => {
       setOnlineUsers(users);
@@ -46,7 +47,9 @@ export default function Chat() {
 
   useEffect(() => {
     if (sendMessage !== null) {
+      console.log("object");
       socket.current.emit('send-message', sendMessage);
+      console.log("11111")
     }
   }, [sendMessage]);
 

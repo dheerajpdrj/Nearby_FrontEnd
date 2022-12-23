@@ -11,12 +11,12 @@ export default function Friends({ followers, following }) {
                 <div className="profile_card_count">
                     {following?.length === 0 ? ""
                         : following?.length === 1 ? "1 followers"
-                            : `${following?.length} followers`}
+                            : `${following?.length ? following?.length : ""} followers`}
                 </div>
                 <div className="profile_card_grid">
                     {following &&
                         following.length &&
-                        following.slice(0, 9).map((followingg,i) => (<div className='profile_photo_card' key={i} >
+                        following.slice(0, 9).map((followingg, i) => (<div className='profile_photo_card' key={i} >
                             <img src={followingg.picture} alt="" />
                             <span>{followingg.first_name} {followingg.last_name}</span>
                         </div>))}
@@ -30,7 +30,7 @@ export default function Friends({ followers, following }) {
                 <div className="profile_card_count">
                     {followers?.length === 0 ? ""
                         : followers?.length === 1 ? "1 following"
-                            : `${followers?.length} following`}
+                            : `${followers?.length ? followers?.length: ""} following`}
                 </div>
                 <div className="profile_card_grid">
                     {followers &&
