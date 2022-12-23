@@ -22,7 +22,7 @@ export default function Chat() {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current = io('http://localhost:8800');
+    socket.current = io('https://nearby-server.fu-tura.live/socket');
     socket.current.emit('new-user-add', user.id);
     socket.current.on('get-users', (users) => {
       setOnlineUsers(users);
